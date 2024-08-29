@@ -1,0 +1,8 @@
+﻿@model List<Userauth>
+<select class="form-select" name="U_Id">
+    <option hidden>Select User</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.U_Id">@item.U_Username</option>
+    }
+</select>

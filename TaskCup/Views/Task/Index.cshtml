@@ -1,0 +1,105 @@
+﻿@model IEnumerable<TaskCup.Models.Tasks>
+@{
+    ViewBag.Title = "Task List";
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="display-6 text-secondary">Task Management</h2>
+        <a class="btn btn-lg btn-primary shadow-sm" asp-action="Create">
+            <i class="fas fa-plus-circle me-2"></i>Create New Task
+        </a>
+    </div>
+
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <form method="get" asp-action="Index">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="statusFilter" class="form-label">Status:</label>
+                        <select id="statusFilter" name="statusFilter" class="form-select">
+                            <option value="">All</option>
+                            <option value="To Do">To Do</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="priorityFilter" class="form-label">Priority:</label>
+                        <select id="priorityFilter" name="priorityFilter" class="form-select">
+                            <option value="">All</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="searchQuery" class="form-label">Search:</label>
+                        <input type="text" id="searchQuery" name="searchQuery" class="form-control" placeholder="Search tasks..." />
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-lg btn-dark w-100 shadow-sm">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">User</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td class="fw-bold text-primary">@task.Title</td>
+                        <td>@task.Description</td>
+                        <td>@task.Deadline?.ToString("MM/dd/yyyy")</td>
+                        <td>
+                            <span class="badge
+                                @(task.Priority == "High" ? "bg-danger text-white" :
+                                  task.Priority == "Medium" ? "bg-warning text-dark" :
+                                  "bg-success text-white")" style="padding: 0.5em 0.75em; font-size: 0.9em;">
+                                @task.Priority
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge
+                                @(task.Status == "Completed" ? "bg-success text-white" :
+                                  task.Status == "In Progress" ? "bg-info text-white" :
+                                  "bg-secondary text-white")" style="padding: 0.5em 0.75em; font-size: 0.9em;">
+                                @task.Status
+                            </span>
+                        </td>
+                        <td>@task.userauth_.U_Username</td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Edit" asp-route-id="@task.Id">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@task.Id">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@task.Id">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

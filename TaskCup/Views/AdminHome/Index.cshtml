@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "TaskCup Dashboard";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+<div class="container mt-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 mb-2">Welcome to TaskCup Dashboard</h1>
+        <p class="lead">Your central hub for task management and user insights.</p>
+    </div>
+
+    <!-- Dashboard Cards Section -->
+    <div class="row">
+        <!-- Tasks Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-primary text-white shadow-lg">
+                <div class="card-body text-center">
+                    <h4 class="card-title mb-4">Tasks Overview</h4>
+                    <p class="card-text">Get a comprehensive view of all your tasks.</p>
+                    <a class="btn btn-light text-primary" href="@Url.Action("Index", "Task")">
+                        <i class="fas fa-tasks me-2"></i> Manage Tasks
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Report Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-info text-white shadow-lg">
+                <div class="card-body text-center">
+                    <h4 class="card-title mb-4">User Report</h4>
+                    <p class="card-text">Insights into user activities and engagement.</p>
+                    <a class="btn btn-light text-info" href="@Url.Action("TaskProgressReport", "Task")">
+                        <i class="fas fa-users me-2"></i> View User Report
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-success text-white shadow-lg">
+                <div class="card-body text-center">
+                    <h4 class="card-title mb-4">User Management</h4>
+                    <p class="card-text">Manage and oversee user profiles and permissions.</p>
+                    <a class="btn btn-light text-success" href="@Url.Action("Index", "Users")">
+                        <i class="fas fa-user-cog me-2"></i> Manage Users
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

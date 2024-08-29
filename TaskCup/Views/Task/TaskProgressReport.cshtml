@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Task Progress Report";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@model IEnumerable<TaskCup.Models.TaskProgressReportViewModel>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-chart-line me-2"></i>Task Progress Report
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Status</th>
+                                <th>Task Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Status</td>
+                                    <td>@item.TaskCount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

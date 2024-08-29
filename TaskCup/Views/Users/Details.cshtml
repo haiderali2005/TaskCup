@@ -1,0 +1,49 @@
+﻿@model TaskCup.Models.Userauth
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-user-circle me-2"></i>User Details
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.U_Username)
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.U_Username)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.U_Email)
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.U_Email)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.U_Password)
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.U_Password)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@Model?.U_Id" class="btn btn-warning">
+                        <i class="fas fa-edit me-1"></i>Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">
+                        <i class="fas fa-arrow-left me-1"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

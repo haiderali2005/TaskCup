@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TaskCup.Models.Userauth>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<div class="container mt-5">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <h1 class="mb-4">User List</h1>
+            <a asp-action="Create" class="btn btn-primary mb-3">
+                <i class="fas fa-user-plus me-2"></i>Create New
+            </a>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().U_Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().U_Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().U_Password)
+                        </th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.U_Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.U_Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.U_Password)
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@item.U_Id" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.U_Id" class="btn btn-info btn-sm mx-2">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.U_Id" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

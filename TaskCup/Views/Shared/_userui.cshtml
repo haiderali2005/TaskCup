@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="TaskCup">
+    <title>TaskCup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="~/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="jquery-3.6.3 (1).js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+     <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.7); /* Transparent background */
+            backdrop-filter: blur(10px); /* Blur effect */
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-left: 20px;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            color: #ffd700; /* Gold color */
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .navbar-toggler {
+            border: none;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-toggler:hover {
+            background-color: #eaeaea;
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .dropdown-menu {
+            background-color: #343a40;
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #495057;
+            color: #ffd700;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+        }
+
+        .dropdown-menu:not(.show) {
+            opacity: 0;
+        }
+
+        .navbar-toggler-icon {
+            color: #000000;
+            font-size: 1.2rem;
+        }
+
+        .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
+            display: none; /* Remove default dropdown arrow */
+        }
+
+        media (max-width: 991px) {
+            .navbar-collapse {
+                margin-top: 1rem;
+            }
+        }
+         .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 2rem 0;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer .container {
+            position: relative;
+        }
+
+        .footer .footerheading h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #ffd700; /* Gold color */
+        }
+
+        .footer .footerpara {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: #cfd8dc;
+        }
+
+        .footer .footerpara1 {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .footer .footerpara1:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        .footer .footer-social-icons a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer .footer-social-icons a:hover {
+            color: #ffd700;
+        }
+
+        .footer .footerpara i {
+            margin-right: 0.5rem;
+        }
+
+        media (max-width: 767px) {
+            .footer .footerheading h1 {
+                font-size: 1.5rem;
+            }
+
+            .footer .footerpara {
+                font-size: 0.8rem;
+            }
+
+            .footer .footer-social-icons a {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" asp-action="ManageTasks" asp-controller="UserUi">
+                <h1>TaskCup</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="ManageTasks" asp-controller="UserUi">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#taskabt">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#taskmain">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Reports" asp-controller="ReportUI">Report</a>
+                    </li>
+                    @{
+                        var username = Context.Session.GetString("myuser");
+                    }
+                    @if (!string.IsNullOrEmpty(username))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @username
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-action="Logout" asp-controller="User">Logout</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Login" asp-controller="User">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footerheading"><h1>Contact</h1></div>
+                    <div class="footerpara"><i class="bi bi-house-door-fill"></i> 123 Karachi, Pakistan</div>
+                    <div class="footerpara"><i class="bi bi-telephone-fill"></i> +92 3403 109347</div>
+                    <div class="footerpara"><i class="bi bi-envelope-fill"></i> taskcup@gmail.com</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footerheading"><h1>TaskCup</h1></div>
+                    <div class="footerpara"><a href="#taskmain" style="pointer-events:all;" class="footerpara1">Tasks</a></div>
+                    <div class="footerpara"><a asp-action="Reports" style="pointer-events:all;" asp-controller="ReportUI" class="footerpara1">Report</a></div>
+                    <div class="footerpara"><a href="#taskabt" style="pointer-events:all;" class="footerpara1">About</a></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footerheading"><h1>Follow Us</h1></div>
+                    <div class="footerpara"><a href="https://www.facebook.com" class="footerpara1" style="pointer-events:all;" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a></div>
+                    <div class="footerpara">
+                        <a href="https://www.linkedin.com" class="footerpara1" style="pointer-events:all;" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
+                    <div class="footerpara">
+                        <a href="https://www.instagram.com" class="footerpara1" style="pointer-events:all;" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

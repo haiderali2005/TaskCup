@@ -1,0 +1,60 @@
+﻿@model TaskCup.Models.Tasks
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-tasks me-2"></i>Task Details
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-3">Title</dt>
+                        <dd class="col-sm-9">@Model.Title</dd>
+
+                        <dt class="col-sm-3">Description</dt>
+                        <dd class="col-sm-9">@Model.Description</dd>
+
+                        <dt class="col-sm-3">Deadline</dt>
+                        <dd class="col-sm-9">@Model.Deadline?.ToString("MM/dd/yyyy")</dd>
+
+                        <dt class="col-sm-3">Priority</dt>
+                        <dd class="col-sm-9">
+                            <span class="badge fs-6
+                                @(Model.Priority == "High" ? "bg-danger text-white" :
+                                  Model.Priority == "Medium" ? "bg-warning text-dark" : "bg-success text-white")">
+                                @Model.Priority
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-3">Status</dt>
+                        <dd class="col-sm-9">
+                            <span class="badge fs-6
+                                @(Model.Status == "Completed" ? "bg-success text-white" :
+                                  Model.Status == "In Progress" ? "bg-info text-white" : "bg-secondary text-white")">
+                                @Model.Status
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-3">Assigned User</dt>
+                        <dd class="col-sm-9">@Model.userauth_.U_Username</dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">
+                        <i class="fas fa-edit me-1"></i>Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

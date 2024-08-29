@@ -1,0 +1,53 @@
+﻿@model TaskCup.Models.Userauth
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-user-plus me-2"></i>Create User
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="U_Username" class="form-label"></label>
+                            <input asp-for="U_Username"  class="form-control" required />
+                            <span asp-validation-for="U_Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="U_Email" class="form-label"></label>
+                            <input asp-for="U_Email" class="form-control" type="email" required />
+                            <span asp-validation-for="U_Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="U_Password" class="form-label"></label>
+                            <input asp-for="U_Password" class="form-control" type="password"required  />
+                            <span asp-validation-for="U_Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>Create
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

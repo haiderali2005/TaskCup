@@ -1,0 +1,77 @@
+﻿@model TaskCup.Models.Tasks
+
+@{
+    ViewData["Title"] = "Delete Task";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-danger shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete Task
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead text-center mb-4">Are you sure you want to delete this task?</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" style="width: 25%;">Title</th>
+                                    <td>@Model.Title</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Description</th>
+                                    <td>@Model.Description</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Deadline</th>
+                                    <td>@Model.Deadline?.ToString("MM/dd/yyyy")</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Priority</th>
+                                    <td>
+                                        <span class="badge fs-6
+                                            @(Model.Priority == "High" ? "bg-danger text-white" :
+                                              Model.Priority == "Medium" ? "bg-warning text-dark" : "bg-success text-white")">
+                                            @Model.Priority
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Status</th>
+                                    <td>
+                                        <span class="badge fs-6
+                                            @(Model.Status == "Completed" ? "bg-success text-white" :
+                                              Model.Status == "In Progress" ? "bg-info text-white" : "bg-secondary text-white")">
+                                            @Model.Status
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Assigned User</th>
+                                    <td>@Model.userauth_.U_Username</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-4">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="Id" />
+                            <button type="submit" class="btn btn-danger me-2">
+                                <i class="fas fa-trash-alt me-1"></i>Delete
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i>Cancel
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
